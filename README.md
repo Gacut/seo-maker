@@ -7,22 +7,14 @@ SEOMaker is a tool designed to simplify and accelerate the process of creating S
 
 ## Features
 - **GUI Interface**: Intuitive tabs for creating new descriptions, manual paraphrasing, and API-powered paraphrasing.
-- **SEO Content Generation**: Quickly generate structured HTML templates for product descriptions.
+- **Template Generation**: Quickly generate structured HTML templates for product descriptions.
 - **Paraphrasing Tools**:
-  - Extract and refine text from HTML.
-  - Replace or modify paragraphs while maintaining proper formatting.
-- **Customizable Templates**:
+  - Extract text from HTML.
+  - Replace or modify paragraphs manually or automatically with LLM.
+- **Flexibility**:
   - Multiple layout options (center, left-aligned, mini).
   - Automatic image filename generation based on product names.
-- **User-Friendly Design**: Includes separators, headers, and polished HTML structure.
 
----
-
-## How It Works
-1. **Input Product Description**: Write or paste the product details into the input field.
-2. **Select Template**: Choose from predefined layouts to structure your description.
-3. **Generate HTML**: Fill the template with content, automatically generate image filenames, and output polished HTML code.
-4. **Paraphrase Content**: Use manual or API-based tools to paraphrise your descriptions.
 
 ---
 
@@ -43,7 +35,7 @@ Download the most recent release.
    - Extract text from HTML.
    - Modify content and reinsert it into the structure.
 3. **Paraphrase API**:
-   - Connect with external paraphrasing APIs (e.g., Claude) for automated text modification.
+   - Send the message to Anthropic Claude for automated text modification.
 
 ---
 
