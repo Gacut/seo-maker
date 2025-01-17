@@ -50,22 +50,7 @@ Download the most recent release.
 
 ## Example Interaction
 
-1. Input product description:
-   ```text
-   Logitech Mouse
-   This wireless mouse offers ergonomic design and long battery life.
-   ```
-2. Select layout (e.g., center).
-3. Generated HTML:
-   ```html
-   <div class="col-3-3 m-center">
-       <p>
-           This wireless mouse offers ergonomic design and long battery life.
-       </p>
-       <img src="https://media.komputronik.pl/pl-komputronik/img/opisy_produktow/content/SEO/logitech-mouse-1.jpg" alt=""/>
-   </div>
-   ```
-
+[screenshots] 
 ---
 
 ## TODO
