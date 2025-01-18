@@ -25,6 +25,7 @@ SEOMaker is a tool designed to simplify and accelerate the process of creating S
 ## Installation
 
 Download the most recent release.
+Add config.json with Anthropic API key.*
 
 ---
 
@@ -53,7 +54,7 @@ Download the most recent release.
 ## TODO
 - Batch Paraphrase Generation: Automatically generate multiple paraphrases based on product features and export to excel.
 - Add Tests: Cover core functionalities such as text processing, template generation, and API integration.
-- Graceful Handling of Missing API Key: Allow the application to run normally when the API key file is missing and display a message indicating the absence of connection instead of raising an error.
+- *Graceful Handling of Missing API Key: Allow the application to run normally when the API key file is missing and display a message indicating the absence of connection instead of raising an error.
 
 ---
 
