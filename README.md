@@ -25,7 +25,8 @@ SEOMaker is a tool designed to simplify and accelerate the process of creating S
 ## Installation
 
 Download the most recent release.
-Add config.json with Anthropic API key.*
+
+*Add config.json with Anthropic API key.
 
 ---
 
