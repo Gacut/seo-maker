@@ -80,7 +80,7 @@ class TextProcessor:
                                         <!-- header-->
                                         <div class="col-3-3">
 
-                                        <h3 class="size-5">
+                                        <h3>
                                                                {header}
                                         </h3>
                                         </div>
@@ -106,7 +106,7 @@ class TextProcessor:
                                     <!-- header-->
                                     <div class="col-3-3">
 
-                                    <h3 class="size-5">
+                                    <h3>
                                     
                                     {header}
 
@@ -119,7 +119,7 @@ class TextProcessor:
                                     <img src="https://media.komputronik.pl/pl-komputronik/img/opisy_produktow/content/SEO/IMAGENAME.jpg" class="left" alt=""/>
                                     </div>
                                     <div class="col-3-5 cc-mobile-1">
-                                    <h3 class="size-5">
+                                    <h3>
                                     
                                     {header}
                                     </h3>
@@ -144,7 +144,7 @@ class TextProcessor:
 
             if self.selectedType == 3:
                 templateElementMini = f"""<div class="col-5-6 m-center">
-                                        <h3 class="size-5">
+                                        <h3>
                                             {header}
                                         </h3>
                                         <p> 
