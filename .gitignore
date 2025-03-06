@@ -8,3 +8,4 @@ build/
 dist/
 SEOMaker/
 config.json
+**/__pycache__/
