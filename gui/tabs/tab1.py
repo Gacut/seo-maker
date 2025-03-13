@@ -2,10 +2,12 @@ import tkinter as tk
 from tkinter import ttk
 from utils.insert_text import insert_text
 from utils.copy_to_clipboard import copy_to_clipboard
+from processors.scraper import Scraper
+
 
 def create_tab1(parent, self):
     self.radio_var = tk.IntVar()
-    self.link_var = tk.IntVar()
+ 
     
     self.tab1 = ttk.Frame(self.notebook)
 
@@ -40,7 +42,9 @@ def create_tab1(parent, self):
     self.linkButtonTab1 = tk.Button(
         self.tab1,
         text="Stwórz tekst produktu",
-        # command = lambda: #wyslij message i wstaw to message w lewy window
+        command = lambda: insert_text(self.textWindowTab1, Scraper(self.linkEntryTab1.get()).generate_input()),
+        bg="#008CBA",
+        width="30"
         
     )
     
@@ -52,8 +56,9 @@ def create_tab1(parent, self):
         command=lambda: self.copyToClipboard(self.imageNameEntryTab1),
         bg="#008CBA"
     )
-
-    self.linkEntryTab1 = tk.Entry(self.tab1, width=20 )
+    
+    self.linkLabelTab1 = tk.Label(self.tab1, text="Link produktu")
+    self.linkEntryTab1 = tk.Entry(self.tab1, width=25 )
 
     
     self.centerRadioTab1 = tk.Radiobutton(
@@ -77,22 +82,14 @@ def create_tab1(parent, self):
         value=3,
         command=self.radioSelectionSend
     )
-    self.useLinkCheckboxTab1 = tk.Checkbutton(
-        self.tab1,
-        text="POBIERZ Z LINKA",
-        variable=self.link_var,
-        onvalue=1,
-        offvalue=0,
-        command=()
-    ) 
-   
+ 
    
     # Layout for Tab 1
     self.centerRadioTab1.grid(row=0, column=0, padx=(50, 25), pady=(20, 0))
     self.leftRadioTab1.grid(row=0, column=1, padx=(25, 25), pady=(20, 0))
     self.miniRadioTab1.grid(row=0, column=2, padx=(25, 50), pady=(20, 0))
 
-    self.useLinkCheckboxTab1.grid(row=1, column=0, padx=(25, 25), pady=(20, 0))
+    self.linkLabelTab1.grid(row=1, column=0, padx=(25, 25), pady=(20, 0))
     self.linkEntryTab1.grid(row=1, column=1, padx=(25, 25), pady=(20, 0))
     self.linkButtonTab1.grid(row=1, column=2, padx=(25, 25), pady=(20, 0))
     

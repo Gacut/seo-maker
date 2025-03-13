@@ -1,0 +1,94 @@
+Utwórz unikalny opis produktu na podstawie <specyfikacja techniczna> wyróżniając <cechy kluczowe>. 
+ 
+##Założenia:
+ 
+ Słowem kluczowym dla opisu jest <nazwa produktu>
+ 
+ Pierwszy akapit to wstęp do opisu produktu, ma zawierać nagłówek
+ 
+ Pozostałe akapity zawierają nagłówki, a ich tematyka ma dotyczyć <cechy kluczowe>
+ 
+ Opis ma być rzeczowy, zwracać uwagę na funkcjonalność opisywanego przedmiotu. 
+ 
+ Nie używaj zwrotów (ani ich odmian) wymienionych w <zwroty zakazane>
+ 
+ Każdy akapit ma zwierać 3-5 zdań
+ 
+ Zwracaj szczególną uwagę na przeznaczenie <nazwa produktu>
+ 
+ 
+##Stylistyka tekstu:
+ 
+ Strona czynna
+ 
+ Stosuj wyłącznie formy przymiotników w stopniu równym
+ 
+ Języki korzyści dla klienta
+ 
+##Odpowiedz w canva
+ 
+ 
+##Notes:
+ 
+ Temperature: 0.7
+ 
+ 
+ 
+##
+ 
+<zwroty zakazane>
+ 
+Najlepszy, najtańszy, najwydajniejszy, tani, idealny, perfekcyjny, doskonały, najnowszy, podsumowanie, bezkonkurencyjny, gwarancja, zapewnia, gwarantuje, nowoczesny
+ 
+</zwroty zakazane>
+ 
+ 
+ 
+###Przykłady prawidłowo skonstruowanych opisów
+ 
+##Przykład 1
+ 
+#Słowo kluczowe: ASUS ROG Phone 9 5G
+ 
+ 
+<przykłady odpowiedzi>
+ 
+ASUS ROG Phone 9 5G to nie tylko telefon – to mobilna platforma gamingowa, która wyznacza nowy standard w świecie smartfonów. Dzięki najnowocześniejszym technologiom i wyjątkowemu designowi, urządzenie zapewnia niezrównane wrażenia zarówno podczas intensywnej rozgrywki, jak i codziennego użytkowania. Poznaj innowacyjne funkcje, które sprawiają, że ASUS ROG Phone 9 5G staje się niezastąpionym towarzyszem każdego gracza.
+ 
+ASUS ROG Phone 9 5G 12/256GB Czarny - Mobilna platforma gamingowa
+ 
+ 
+Moc i wydajność na najwyższym poziomie
+ 
+ASUS ROG Phone 9 5G napędza potężny procesor Snapdragon 8 Elite oraz 12 GB pamięci RAM, co zapewnia błyskawiczne działanie nawet w najbardziej wymagających grach i aplikacjach. Zastosowanie technologii UFS 4.0 zwiększa szybkość odczytu i zapisu danych, dzięki czemu aplikacje uruchamiają się niemal natychmiast. Urządzenie oferuje aż 256 GB przestrzeni na Twoje gry, multimedia i dokumenty, co eliminuje potrzebę częstego zarządzania pamięcią. Niezależnie od liczby otwartych aplikacji, telefon działa płynnie i bez najmniejszych opóźnień.
+ 
+ 
+Ekran dla prawdziwych entuzjastów
+ 
+Wyświetlacz AMOLED z odświeżaniem 165 Hz oferuje niesamowitą płynność i doskonałą jakość obrazu. Rozdzielczość i jasność ekranu pozwalają cieszyć się każdym szczegółem w grach, filmach czy podczas przeglądania zdjęć. Dodatkowo, ochrona Gorilla Glass Victus 2 gwarantuje trwałość i odporność na uszkodzenia, co sprawia, że ekran pozostaje nienaruszony nawet przy intensywnym użytkowaniu. Zoptymalizowane odwzorowanie kolorów i wysoka jasność sprawiają, że każda rozgrywka staje się jeszcze bardziej emocjonująca.
+ 
+ 
+AI Gaming i chłodzenie GameCool
+ 
+Dzięki technologii AI Gaming telefon automatycznie dostosowuje parametry systemowe, takie jak wydajność i zużycie energii, aby zapewnić optymalne wrażenia podczas gry. Innowacyjny system chłodzenia GameCool zapobiega przegrzewaniu urządzenia, nawet podczas wielogodzinnej rozgrywki. Zintegrowane rozwiązania chłodzące, w tym miedziane przewody i komora parowa, utrzymują temperaturę na niskim poziomie, eliminując throttling i zwiększając komfort użytkowania.
+ 
+ 
+Profesjonalny system kamer
+ 
+ASUS ROG Phone 9 jest wyposażony w zaawansowany system trzech aparatów. Główny aparat 50 MP z sensorem Sony gwarantuje doskonałą jakość zdjęć w każdych warunkach oświetleniowych. Ultraszerokokątny obiektyw 13 MP pozwala uchwycić więcej na jednym ujęciu, a kamera makro umożliwia fotografowanie najmniejszych detali. Przedni aparat 32 MP sprawia, że każde selfie prezentuje się perfekcyjnie. Sztuczna inteligencja optymalizuje zdjęcia w czasie rzeczywistym, co czyni każde ujęcie wyjątkowym.
+ 
+ 
+Bateria na każdą okazję
+ 
+Ogromna bateria o pojemności 6000 mAh zapewnia nieprzerwaną rozgrywkę przez wiele godzin. Technologia szybkiego ładowania 65 W pozwala naładować urządzenie w krótkim czasie, a funkcja ładowania adaptacyjnego chroni baterię przed zużyciem. Możliwość równoczesnego ładowania i gry eliminuje przestoje, co jest kluczowe podczas turniejów i długich sesji gamingowych.
+ 
+ 
+ 
+Dźwięk, który Cię wciąga
+ 
+System audio w ASUS ROG Phone 9 został stworzony z myślą o graczach. Podwójne przednie głośniki zapewniają przestrzenny dźwięk, a wsparcie dla technologii Dirac Audio gwarantuje czystość i głębię brzmienia. Zintegrowane funkcje Bluetooth umożliwiają podłączenie najnowszych zestawów słuchawkowych bez opóźnień, co zwiększa immersję podczas rozgrywki.
+ 
+</przykłady odpowiedzi>
+ 
+ 
+###

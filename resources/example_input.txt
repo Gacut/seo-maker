@@ -1,0 +1,100 @@
+<nazwa produktu> 
+Xiaomi Watch S4 
+
+</nazwa produktu>
+
+<specyfikacja techniczna>
+Grupa produktowa
+Smartwatche i smartbandy Xiaomi 
+Rodzaj produktu
+smartwatch
+Rozmiar
+47 mm
+Przeznaczenie
+damski
+męski
+Kompatybilność systemowa
+Android
+iOS
+Najważniejsze obsługiwane aktywności
+bieg
+chód
+kolarstwo
+sen
+Protokół komunikacji
+Bluetooth
+Maksymalny czas pracy
+15 dni
+Funkcje
+Funkcje
+alarm
+czas i jakość snu
+czas trwania snu
+identyfikacja dzwoniącego
+kompas cyfrowy
+krokomierz
+licznik kalorii
+pomiar dystansu
+powiadomienia
+wibracje
+wskaźnik aktywności
+wykrywanie wypadków
+Pomiar pulsu
+tak
+Metoda pomiaru pulsu
+wbudowany pomiar pulsu w zegarek
+Pomiar saturacji SpO2 (pulsoksymetr)
+tak
+Czujniki i komponenty
+akcelerometr
+barometr
+czujnik Halla
+czujnik światła
+kompas cyfrowy
+żyroskop
+Ochrona przed wodą
+wodoodporny
+Wodoszczelność
+5 ATM
+Wyświetlacz
+Typ ekranu
+wyświetlacz
+Rodzaj wyświetlacza
+Amoled
+Wyświetlacz
+1.43 cale
+Rozdzielczość ekranu
+466 x 466 pikseli
+Podświetlany ekran
+tak
+Dane fizyczne
+Wymiary
+47 x 47 x 12 mm
+Waga
+44.5 g
+Kształt urządzenia
+okrągły
+Kolor urządzenia
+czarny
+Obwód nadgarstka
+140-210 mm
+Kolor paska
+czarny
+Materiał paska
+kauczuk
+Zasilanie
+Pojemność akumulatora
+486 mAh
+Pozostałe cechy
+Zawartość zestawu
+kabel zasilający
+urządzenie
+Model
+Xiaomi Watch S4
+
+</specyfikacja techniczna>
+
+<cechy kluczowe>
+Rozmiar: 47 mm
+Materiał paska: kauczuk
+</cechy kluczowe>
