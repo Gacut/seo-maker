@@ -1,15 +1,23 @@
-from utils.get_base_path import get_base_path
+from .get_base_path import get_base_path
 import os
 
-def load_default_prompt():
+def load_prompt(prompt_type="paraphraser"):
   
     base_path = get_base_path()
-    prompt_path = os.path.join(base_path, 'resources', 'prompt.txt')  # Dynamically build the path
+    prompt_files = {
+        "paraphraser": "paraphraser_prompt.txt",
+        "text_gen": "text_gen_prompt.txt",
+    }
+    
+    if prompt_type not in prompt_files:
+        raise ValueError(f"Unknown prompt type: {prompt_type}")
+    
+    filename = prompt_files.get(prompt_type)
+    prompt_path = os.path.join(base_path, 'resources', filename)
 
-    # Open and read the file
+
     try:
         with open(prompt_path, 'r', encoding='utf-8') as file:
-            prompt = file.read()
-        return prompt
+            return file.read()
     except FileNotFoundError:
-        raise FileNotFoundError(f"Prompt file not found at {prompt_path}. Please ensure it exists.")
+        raise FileNotFoundError(f"Prompt file '{filename}' not found in resources directory.")

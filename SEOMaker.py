@@ -9,14 +9,12 @@ if __name__ == "__main__":
     # Create GUI first without linking components
     gui = GUI(text_processor=None, paraphraser=None, claude_client=None)
 
-    # Initialize components
-    text_processor = TextProcessor(gui)
+ 
+    text_processor = TextProcessor(gui)    # Initialize components
+    gui.textProcessor = text_processor     # Link components to GUI
     paraphraser = Paraphraser(gui)
-    claude_client = ClaudeClient(gui)
-
-    # Link components to GUI
-    gui.textProcessor = text_processor
     gui.paraphraser = paraphraser
+    claude_client = ClaudeClient(gui)
     gui.ClaudeClient = claude_client
 
     # Start the GUI application

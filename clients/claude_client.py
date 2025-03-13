@@ -2,11 +2,11 @@ import anthropic
 import json
 import os
 import tkinter as tk
-from utils.prompt_loader import load_default_prompt
+from utils.prompt_loader import load_prompt
 from utils.get_base_path import get_base_path 
 
 import time
-
+    
 class ClaudeClient:
     def __init__(self, gui): 
         self.gui = gui 
@@ -29,13 +29,30 @@ class ClaudeClient:
             api_key=self.api_key
         )
         
-        self.prompt = load_default_prompt()
+        self.paraphrase_prompt = load_prompt('paraphraser')
+    
+        
         self.MAX_RETRIES = 3
         self.DELAY = 5
+      
+        
     
     
-    def createMessage(self):
-        inputText = self.gui.paraphraser.extractContent(self.gui.HTMLWindowTab3)
+    def createMessage(self, button_type):
+         
+        self.button_config = {
+            "text_from_spec_generator":{
+                "input": self.gui.paraphraser.extractContent(self.gui.HTMLWindowTab3),
+                "output_window": self.gui.textWindowTab1,
+                "prompt": load_prompt('text_gen')
+            },
+            "paraphraser":{
+                "input": self.gui.paraphraser.extractContent(self.gui.HTMLWindowTab3),
+                "output_window": self.gui.textWindowTab3,
+                "prompt": load_prompt('paraphraser')
+            }
+        } 
+        config = self.button_config[button_type]
         
         for attempt in range(self.MAX_RETRIES):
             try:
@@ -43,22 +60,23 @@ class ClaudeClient:
                     model="claude-3-5-sonnet-20241022",
                     max_tokens=1000,
                     temperature=0,
-                    system= self.prompt,
+                    system= config["prompt"],
                     messages=[
                         {
                             "role": "user",
                             "content": [
                                 {
                                     "type": "text",
-                                    "text": inputText
+                                    "text": config["input"]
                                 }
                             ]
                         }
                     ]
                 )
+                
                 message = response.content[0].text
-                self.gui.textWindowTab3.delete("1.0", tk.END)
-                self.gui.textWindowTab3.insert("end", message)
+                config["output_window"].delete("1.0", tk.END)
+                config["output_window"].insert("end", message)
                 return
             except Exception as e:
                 if attempt < self.MAX_RETRIES -1:
@@ -66,4 +84,38 @@ class ClaudeClient:
                     time.sleep(self.DELAY)
                 else:
                     print(f"Przekroczono ilość prób. Spróbuj ponownie później. Error: {e}")
-                    self.gui.textWindowTab3.insert("end", f"Przekroczono ilość prób. Spróbuj ponownie później. Error: {e}\n\nSprawdź status dostępności API na https://status.anthropic.com/")
+                    config["output_window"].insert("end", f"Przekroczono ilość prób. Spróbuj ponownie później. Error: {e}\n\nSprawdź status dostępności API na https://status.anthropic.com/")
+                    
+    # def createMessage(self):
+    #     inputText = self.gui.paraphraser.extractContent(self.gui.HTMLWindowTab3)
+        
+    #     for attempt in range(self.MAX_RETRIES):
+    #         try:
+    #             response = self.client.messages.create(
+    #                 model="claude-3-5-sonnet-20241022",
+    #                 max_tokens=1000,
+    #                 temperature=0,
+    #                 system= self.prompt,
+    #                 messages=[
+    #                     {
+    #                         "role": "user",
+    #                         "content": [
+    #                             {
+    #                                 "type": "text",
+    #                                 "text": inputText
+    #                             }
+    #                         ]
+    #                     }
+    #                 ]
+    #             )
+    #             message = response.content[0].text
+    #             self.gui.textWindowTab3.delete("1.0", tk.END)
+    #             self.gui.textWindowTab3.insert("end", message)
+    #             return
+    #         except Exception as e:
+    #             if attempt < self.MAX_RETRIES -1:
+    #                 print(f"Połączenie {attempt + 1} zawiodło. Ponowna próba za {self.DELAY} sekund...")
+    #                 time.sleep(self.DELAY)
+    #             else:
+    #                 print(f"Przekroczono ilość prób. Spróbuj ponownie później. Error: {e}")
+    #                 self.gui.textWindowTab3.insert("end", f"Przekroczono ilość prób. Spróbuj ponownie później. Error: {e}\n\nSprawdź status dostępności API na https://status.anthropic.com/")

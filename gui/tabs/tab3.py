@@ -16,7 +16,7 @@ def create_tab3(parent, self):
         self.transferToTextButtonTab3 = tk.Button(
             self.tab3,
             text="Wyślij do Claude -->",
-            command=lambda: self.ClaudeClient.createMessage(),
+            command=lambda: self.ClaudeClient.createMessage("paraphraser"),
             bg="#008CBA",
             width="15"
         )

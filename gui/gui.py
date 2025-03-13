@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from utils.prompt_loader import load_default_prompt
+from utils.prompt_loader import load_prompt
 from utils.get_base_path import get_base_path
 import os
 from .tabs import create_tab1, create_tab2, create_tab3
@@ -18,14 +18,14 @@ class GUI:
         self.window.iconbitmap(icon_path)
         
         
-        self.window.geometry("800x650")
+        self.window.geometry("900x650")
         self.window.configure(background='white')
         self.window.resizable(False, False)
 
         self.textProcessor = text_processor
         self.paraphraser = paraphraser
         self.ClaudeClient = claude_client
-        self.defaultPrompt = load_default_prompt()
+        self.defaultPrompt = load_prompt()
 
         self.createWidgets()
         self.setupLayout()
@@ -51,11 +51,12 @@ class GUI:
         self.notebook.pack(expand=True, fill='both')
 
 
-
-
     def run(self):
         self.window.mainloop() 
     
     #EXTRACT TO UTILS
     def radioSelectionSend(self):
-        self.textProcessor.selectedType = self.var.get()
+        self.textProcessor.selectedType = self.radio_var.get()
+        
+    def linkCheckBoxSend(self):
+        self.textProcessor.linkSelection = self.link_var.get()
