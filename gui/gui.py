@@ -1,7 +1,9 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import Toplevel, ttk
+from processors.scraper import Scraper
 from utils.prompt_loader import load_prompt
 from utils.get_base_path import get_base_path
+from utils.insert_text import insert_text
 import os
 from .tabs import create_tab1, create_tab2, create_tab3
 
@@ -26,6 +28,7 @@ class GUI:
         self.paraphraser = paraphraser
         self.ClaudeClient = claude_client
         self.defaultPrompt = load_prompt()
+        self.last_product_spec = None
 
         self.createWidgets()
         self.setupLayout()
@@ -53,6 +56,29 @@ class GUI:
 
     def run(self):
         self.window.mainloop() 
+    
+    
+    def show_scraped_data(self):
+        if not self.linkEntryTab1.get():
+            return
+            
+        scraper = Scraper(self.linkEntryTab1.get())
+        input_template = scraper.generate_input()
+        
+        if input_template:
+            self.last_product_spec = input_template
+        else:
+            self.last_product_spe = "Nie udało się pobrać danych"
+
+    def open_product_spec_window(self, product_spec=None):
+        product_spec_window = Toplevel(self.window)
+        product_spec_window.title("Specyfikacja produktu")
+        
+        product_spec_box = tk.Text(product_spec_window, height=50, width=70)
+        product_spec_box.pack(padx=5, pady=5)
+        
+        spec_content = self.last_product_spec if self.last_product_spec else "Brak dostępnej specyfikacji"
+        insert_text(product_spec_box, spec_content)
     
     #EXTRACT TO UTILS
     def radioSelectionSend(self):

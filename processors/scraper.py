@@ -16,25 +16,60 @@ from utils.insert_text import insert_text
 class Scraper:
     def __init__(self, product_url):
         self.selenium = SeleniumDriver()
-        self.product_data = {}
         self.product_url = product_url
-
+        
     def _scrape_product(self, product_url: str) -> dict:
+        product_data = {}
         try:
             self._load_product_page(product_url)
-            self.product_data["name"] = self._extract_product_name()
-            self.product_data["specifications"] = self._extract_specifications()
-            self.product_data["key_features"] = self._extract_key_features()
-            self.product_data["key_features"] = self.product_data["key_features"].replace("Zobacz wszystkie cechy",'')
-            self.product_data["key_features"] = self.product_data["key_features"].replace("Pokaż więcej wyników",'')
-            self.product_data["specifications"] = self.product_data["specifications"].replace("Dane techniczne",'')
-            return self.product_data
+            product_data["name"] = self._extract_product_name()
+            
+            raw_specs = self._extract_specifications()
+            lines = raw_specs.split('\n')
+            cleaned_specs = []
+            skip_next = False
+            
+            for i, line in enumerate(lines):
+                if skip_next:
+                    skip_next = False
+                    continue
+            
+                if line.strip() == "Gwarancja":
+                    skip_next = True
+                    continue
+                
+                if line.strip() == "Dane techniczne":
+                    continue
+                
+                cleaned_specs.append(line)
+            
+            product_data["specifications"] = '\n'.join(cleaned_specs).strip()
+            
+            
+            
+            raw_features = self._extract_key_features()
+            cleaned_features = []
+            
+            for line in raw_features.split('\n'):
+                line = line.strip()
+                if line.strip() == "Pokaż więcej wyników":
+                    continue
+                elif ':' in line:
+                    header_part = line.split(':', 1)[0].strip()
+                    cleaned_features.append(f"{header_part}")
+                elif line and not line.isdigit():  
+                    cleaned_features.append(f"{line}:")
+            
+            product_data["key_features"] = '\n'.join(cleaned_features).strip()
+            
+            return product_data
         finally:
             self.selenium.quit()
             
+            
     def _load_product_page(self, url: str):
         self.selenium.get(url)
-        WebDriverWait(self.selenium, 10).until(
+        self.selenium.wait.until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "[data-name='productPage']"))
         )
         
@@ -54,27 +89,19 @@ class Scraper:
         ).text.strip()
          
     def generate_input(self):
-        
         try:
-            scraped_data = self.selenium.scrape_product(self.product_url)
-            
+            scraped_data = self._scrape_product(self.product_url)
+            return f"""
+            <nazwa produktu>
+            {scraped_data["name"]}
+            </nazwa produktu>
+            <specyfikacja techniczna>
+            {scraped_data["specifications"]}
+            </specyfikacja techniczna>
+            <cechy kluczowe>
+            {scraped_data["key_features"]}
+            </cechy kluczowe>
+            """
         except Exception as e:
-            print(f"Error while scraping {self.product_url}: {str(e)}")
-        finally:
-            self.selenium.quit() 
-            
-        input_template = f"""
-        <nazwa produktu>
-        {scraped_data["name"]}
-        </nazwa produktu>
-        <specyfikacja techniczna>
-        {scraped_data["specifications"]}
-        </specyfikacja techniczna>
-        <cechy kluczowe>
-        {scraped_data["key_features"]}
-        </cechy kluczowe>
-        """
-        return input_template
-    
-   
-        
+            print(f"Błąd podczas scrapowania: {str(e)}")
+            return ""

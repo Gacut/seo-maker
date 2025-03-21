@@ -42,9 +42,9 @@ def create_tab1(parent, self):
     self.linkButtonTab1 = tk.Button(
         self.tab1,
         text="Stwórz tekst produktu",
-        command = lambda: insert_text(self.textWindowTab1, Scraper(self.linkEntryTab1.get()).generate_input()),
+        command = lambda: self.show_scraped_data(),
         bg="#008CBA",
-        width="30"
+        width="20"
         
     )
     
@@ -57,7 +57,13 @@ def create_tab1(parent, self):
         bg="#008CBA"
     )
     
-    self.linkLabelTab1 = tk.Label(self.tab1, text="Link produktu")
+    self.linkSpecButtonTab1 = tk.Button(
+        self.tab1,
+        text="Specyfikacja produktu",
+        command=lambda: self.open_product_spec_window(),
+        bg="#008CBA"
+    )
+    
     self.linkEntryTab1 = tk.Entry(self.tab1, width=25 )
 
     
@@ -89,9 +95,9 @@ def create_tab1(parent, self):
     self.leftRadioTab1.grid(row=0, column=1, padx=(25, 25), pady=(20, 0))
     self.miniRadioTab1.grid(row=0, column=2, padx=(25, 50), pady=(20, 0))
 
-    self.linkLabelTab1.grid(row=1, column=0, padx=(25, 25), pady=(20, 0))
-    self.linkEntryTab1.grid(row=1, column=1, padx=(25, 25), pady=(20, 0))
-    self.linkButtonTab1.grid(row=1, column=2, padx=(25, 25), pady=(20, 0))
+    self.linkSpecButtonTab1.grid(row=1, column=2, padx=(25, 25), pady=(20, 0))
+    self.linkEntryTab1.grid(row=1, column=0, padx=(25, 25), pady=(20, 0))
+    self.linkButtonTab1.grid(row=1, column=1, padx=(25, 25), pady=(20, 0))
     
     self.textLabelTab1.grid(row=2, column=0, padx=(50, 25), pady=(20, 0))
     self.htmlLabelTab1.grid(row=2, column=2, padx=(25, 50), pady=(20, 0))
