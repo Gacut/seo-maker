@@ -10,13 +10,36 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from processors.selenium import SeleniumDriver
 from utils.insert_text import insert_text
-
+from processors.text_processor import TextProcessor
 
 
 class Scraper:
-    def __init__(self, product_url):
+    def __init__(self, product_url, text_processor):
         self.selenium = SeleniumDriver()
         self.product_url = product_url
+        self.text_processor = text_processor
+         
+    def generate_input(self):
+        try:
+            scraped_data = self._scrape_product(self.product_url)
+            self.text_processor.generateImageFileName(scraped_data["name"])
+        
+            return f"""
+            <nazwa produktu>
+            {scraped_data["name"]}
+            </nazwa produktu>
+            <specyfikacja techniczna>
+            {scraped_data["specifications"]}
+            </specyfikacja techniczna>
+            <cechy kluczowe>
+            {scraped_data["key_features"]}
+            </cechy kluczowe>
+            """
+            
+
+        except Exception as e:
+            print(f"Błąd podczas scrapowania: {str(e)}")
+            return ""    
         
     def _scrape_product(self, product_url: str) -> dict:
         product_data = {}
@@ -126,22 +149,7 @@ class Scraper:
         
         return "\n".join(unique_headers).strip()
 
-                    
-         
-    def generate_input(self):
-        try:
-            scraped_data = self._scrape_product(self.product_url)
-            return f"""
-            <nazwa produktu>
-            {scraped_data["name"]}
-            </nazwa produktu>
-            <specyfikacja techniczna>
-            {scraped_data["specifications"]}
-            </specyfikacja techniczna>
-            <cechy kluczowe>
-            {scraped_data["key_features"]}
-            </cechy kluczowe>
-            """
-        except Exception as e:
-            print(f"Błąd podczas scrapowania: {str(e)}")
-            return ""
+      
+        
+   
+        

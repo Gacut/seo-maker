@@ -62,7 +62,7 @@ class GUI:
         if not self.linkEntryTab1.get():
             return
             
-        scraper = Scraper(self.linkEntryTab1.get())
+        scraper = Scraper(self.linkEntryTab1.get(), self.textProcessor)
         input_template = scraper.generate_input()
         
         if input_template:

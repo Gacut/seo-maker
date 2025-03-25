@@ -17,5 +17,5 @@ if __name__ == "__main__":
     claude_client = ClaudeClient(gui)
     gui.ClaudeClient = claude_client
 
-    # Start the GUI application
+ 
     gui.run()

@@ -45,15 +45,11 @@ Najlepszy, najtańszy, najwydajniejszy, tani, idealny, perfekcyjny, doskonały, 
  
  
 ###Przykłady prawidłowo skonstruowanych opisów
- 
-##Przykład 1
- 
-#Słowo kluczowe: ASUS ROG Phone 9 5G
- 
- 
 <przykłady odpowiedzi>
+<przykład 1>
  
-ASUS ROG Phone 9 5G to nie tylko telefon – to mobilna platforma gamingowa, która wyznacza nowy standard w świecie smartfonów. Dzięki najnowocześniejszym technologiom i wyjątkowemu designowi, urządzenie zapewnia niezrównane wrażenia zarówno podczas intensywnej rozgrywki, jak i codziennego użytkowania. Poznaj innowacyjne funkcje, które sprawiają, że ASUS ROG Phone 9 5G staje się niezastąpionym towarzyszem każdego gracza.
+Słowo kluczowe: ASUS ROG Phone 9 5G
+ASUS ROG Phone 9 5G - mobilna platforma gamingowa, która wyznacza nowy standard w świecie smartfonów. Dzięki najnowocześniejszym technologiom i wyjątkowemu designowi, urządzenie zapewnia niezrównane wrażenia zarówno podczas intensywnej rozgrywki, jak i codziennego użytkowania. Poznaj innowacyjne funkcje, które sprawiają, że ASUS ROG Phone 9 5G staje się niezastąpionym towarzyszem każdego gracza.
  
 ASUS ROG Phone 9 5G 12/256GB Czarny - Mobilna platforma gamingowa
  
@@ -87,7 +83,38 @@ Ogromna bateria o pojemności 6000 mAh zapewnia nieprzerwaną rozgrywkę przez w
 Dźwięk, który Cię wciąga
  
 System audio w ASUS ROG Phone 9 został stworzony z myślą o graczach. Podwójne przednie głośniki zapewniają przestrzenny dźwięk, a wsparcie dla technologii Dirac Audio gwarantuje czystość i głębię brzmienia. Zintegrowane funkcje Bluetooth umożliwiają podłączenie najnowszych zestawów słuchawkowych bez opóźnień, co zwiększa immersję podczas rozgrywki.
- 
+ </przykład 1>
+
+<przykład 2>
+Słowo kluczowe: Acer Nitro XV271UM3BMIIPRX
+Acer Nitro XV271UM3BMIIPRX – uniwersalny monitor QHD do pracy i rozrywki
+
+Wyraźny obraz i szerokie kąty widzenia
+
+Acer Nitro XV271UM3BMIIPRX to 27-calowy monitor o rozdzielczości 2560 x 1440 pikseli (QHD), który łączy wysoką jakość obrazu z funkcjonalnością odpowiednią do codziennej pracy, nauki i rozrywki. Matryca IPS gwarantuje realistyczne odwzorowanie kolorów i szerokie kąty widzenia (178°), a antyrefleksyjna powłoka skutecznie redukuje odblaski, zapewniając czytelność obrazu w różnych warunkach oświetleniowych.
+
+Płynność działania i wsparcie dla graczy
+
+Częstotliwość odświeżania 180 Hz oraz czas reakcji 1 ms sprawiają, że monitor doskonale sprawdza się także w dynamicznych scenach – zarówno podczas grania, jak i oglądania filmów czy edycji wideo. Technologia FreeSync Premium synchronizuje obraz z kartą graficzną, eliminując efekt zacinania i rozrywania klatek.
+
+Ergonomiczna konstrukcja i wygoda użytkowania
+
+Dzięki regulacji wysokości, pochylenia oraz obrotu (swivel), monitor można łatwo dostosować do preferencji użytkownika, zapewniając wygodną i ergonomiczną pozycję podczas długotrwałego korzystania. To idealne rozwiązanie do pracy przy biurku, jak i domowej rozrywki.
+
+Technologie chroniące wzrok
+
+Monitor został wyposażony w funkcje redukcji migotania (Flicker-Free) oraz filtr światła niebieskiego, które zmniejszają zmęczenie oczu podczas długich godzin przed ekranem. Obsługa standardu HDR pozwala na uzyskanie lepszego kontrastu i szerszej palety barw, co wzbogaca doznania wizualne w grach i filmach.
+
+Złącza i dźwięk w jednym urządzeniu
+
+Acer Nitro XV271UM3BMIIPRX posiada porty 2 x HDMI, 1 x DisplayPort oraz wyjście słuchawkowe, co zapewnia kompatybilność z wieloma urządzeniami. Zintegrowane głośniki stereo o mocy 2 x 2 W oferują podstawowy dźwięk bez potrzeby podłączania zewnętrznego zestawu audio.
+
+Acer Nitro XV271UM3BMIIPRX to praktyczny wybór dla użytkowników szukających monitora o wysokiej rozdzielczości, płynności obrazu i nowoczesnych funkcjach – idealny do zastosowań domowych i biurowych.
+
+
+</przykład 2>
+
+
 </przykłady odpowiedzi>
  
  
