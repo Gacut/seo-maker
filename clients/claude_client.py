@@ -4,8 +4,8 @@ import os
 import tkinter as tk
 from utils.prompt_loader import load_prompt
 from utils.get_base_path import get_base_path 
-
 import time
+from processors.scraper import Scraper
     
 class ClaudeClient:
     def __init__(self, gui): 
@@ -31,17 +31,15 @@ class ClaudeClient:
         
         self.paraphrase_prompt = load_prompt('paraphraser')
     
-        
         self.MAX_RETRIES = 3
-        self.DELAY = 5
+        self.DELAY = 3
         
     
     
     def createMessage(self, button_type):
-         
         self.button_config = {
             "text_from_spec_generator":{
-                "input": self.gui.paraphraser.extractContent(self.gui.HTMLWindowTab3),
+                "input": self.gui.last_product_spec,
                 "output_window": self.gui.textWindowTab1,
                 "prompt": load_prompt('text_gen')
             },

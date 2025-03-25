@@ -58,7 +58,7 @@ class GUI:
         self.window.mainloop() 
     
     
-    def show_scraped_data(self):
+    def get_scraped_product_data(self):
         if not self.linkEntryTab1.get():
             return
             
@@ -68,8 +68,9 @@ class GUI:
         if input_template:
             self.last_product_spec = input_template
         else:
-            self.last_product_spe = "Nie udało się pobrać danych"
+            self.last_product_spec = "Nie udało się pobrać danych"
 
+        
     def open_product_spec_window(self, product_spec=None):
         product_spec_window = Toplevel(self.window)
         product_spec_window.title("Specyfikacja produktu")

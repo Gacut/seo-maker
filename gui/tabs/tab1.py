@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from utils.insert_text import insert_text
 from utils.copy_to_clipboard import copy_to_clipboard
-from processors.scraper import Scraper
+
 
 
 def create_tab1(parent, self):
@@ -42,7 +42,7 @@ def create_tab1(parent, self):
     self.linkButtonTab1 = tk.Button(
         self.tab1,
         text="Stwórz tekst produktu",
-        command = lambda: self.show_scraped_data(),
+        command=lambda: (self.get_scraped_product_data(), self.ClaudeClient.createMessage("text_from_spec_generator")),
         bg="#008CBA",
         width="20"
         

@@ -25,42 +25,10 @@ class Scraper:
             product_data["name"] = self._extract_product_name()
             
             raw_specs = self._extract_specifications()
-            lines = raw_specs.split('\n')
-            cleaned_specs = []
-            skip_next = False
+            product_data["specifications"] = self._clean_specifications(raw_specs)
+
+            product_data["key_features"] = self._extract_key_features()
             
-            for i, line in enumerate(lines):
-                if skip_next:
-                    skip_next = False
-                    continue
-            
-                if line.strip() == "Gwarancja":
-                    skip_next = True
-                    continue
-                
-                if line.strip() == "Dane techniczne":
-                    continue
-                
-                cleaned_specs.append(line)
-            
-            product_data["specifications"] = '\n'.join(cleaned_specs).strip()
-            
-            
-            
-            raw_features = self._extract_key_features()
-            cleaned_features = []
-            
-            for line in raw_features.split('\n'):
-                line = line.strip()
-                if line.strip() == "Pokaż więcej wyników":
-                    continue
-                elif ':' in line:
-                    header_part = line.split(':', 1)[0].strip()
-                    cleaned_features.append(f"{header_part}")
-                elif line and not line.isdigit():  
-                    cleaned_features.append(f"{line}:")
-            
-            product_data["key_features"] = '\n'.join(cleaned_features).strip()
             
             return product_data
         finally:
@@ -74,19 +42,91 @@ class Scraper:
         )
         
     def _extract_specifications(self):
-        return self.selenium.wait.until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, "[data-name='specsGroup']"))
-        ).text.strip()
-    
+        specs_groups = self.selenium.wait.until(
+            EC.visibility_of_all_elements_located((By.CSS_SELECTOR, "[data-name='specsGroup']"))
+        )
+        group_texts = []
+        for group in specs_groups:
+            group_text = group.text.strip()
+            lines = group_text.splitlines()
+            if lines and lines[0].strip() == "Producent":
+                continue 
+            group_texts.append(group_text)
+            
+            
+        return "\n\n".join(group_texts)
+            
+    def _clean_specifications(self, raw_specs:str) -> str:
+        lines = raw_specs.split('\n')
+        cleaned_specs = []
+        skip_next = False
+        
+        for line in lines:
+            if skip_next:
+                skip_next = False
+                continue
+
+            if line.strip() == "Gwarancja":
+                skip_next = True
+                continue
+
+            if line.strip() == "Dane techniczne":
+                continue
+            
+            cleaned_specs.append(line)
+
+        return "\n".join(cleaned_specs).strip()
+
     def _extract_product_name(self):
         return self.selenium.wait.until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, "[data-name='productName']"))
         ).text.strip()
         
-    def _extract_key_features(self):
-         return self.selenium.wait.until(
+    def _extract_key_features(self) -> str:
+        """
+        Pobiera z kontenera [data-name='productAttributes'] tylko tytuły (nagłówki)
+        cech produktu. Wyszukujemy elementy <p> (które w większości przypadków
+        zawierają tytuły) oraz w przypadku, gdy nagłówek jest w innym elemencie,
+        np. <span> kończącym się dwukropkiem, również go wyłuskujemy.
+        Dzięki temu unikamy pobierania wartości – nawet jeśli dla danego key feature
+        dostępnych jest wiele opcji.
+        """
+        container = self.selenium.wait.until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, "[data-name='productAttributes']"))
-        ).text.strip()
+        )
+        headers = []
+        
+        # 1. Pobieramy wszystkie <p>, które nie są wewnątrz <label> (w radio buttonach mamy wartości)
+        p_elements = container.find_elements(By.XPATH, ".//p[not(ancestor::label)]")
+        for p in p_elements:
+            text = p.text.strip()
+            if text:
+                # Usuwamy ewentualny dwukropek na końcu
+                headers.append(text.rstrip(":"))
+        
+        # 2. Dla przypadków, gdy tytuł nie znajduje się w <p> (np. "Kolor obudowy:") – szukamy w divach
+        div_elements = container.find_elements(By.CSS_SELECTOR, "div.mt-4")
+        for div in div_elements:
+            # Jeśli dany div nie zawiera <p>, sprawdzamy, czy zawiera <span> z tekstem kończącym się dwukropkiem.
+            if not div.find_elements(By.TAG_NAME, "p"):
+                span_elements = div.find_elements(By.TAG_NAME, "span")
+                for span in span_elements:
+                    text = span.text.strip()
+                    if text.endswith(":"):
+                        headers.append(text.rstrip(":"))
+                        break  # Pobieramy pierwszy napotkany nagłówek w tym divie
+        
+        # Usuwamy ewentualne duplikaty, zachowując kolejność
+        seen = set()
+        unique_headers = []
+        for header in headers:
+            if header not in seen:
+                seen.add(header)
+                unique_headers.append(header)
+        
+        return "\n".join(unique_headers).strip()
+
+                    
          
     def generate_input(self):
         try:
