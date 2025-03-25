@@ -139,15 +139,10 @@ class Scraper:
                         headers.append(text.rstrip(":"))
                         break  # Pobieramy pierwszy napotkany nagłówek w tym divie
         
-        # Usuwamy ewentualne duplikaty, zachowując kolejność
-        seen = set()
-        unique_headers = []
-        for header in headers:
-            if header not in seen:
-                seen.add(header)
-                unique_headers.append(header)
+        unwanted_headers = ["Kolor", "Kolor obudowy"]
+        filtered_headers = [header for header in headers if header not in unwanted_headers]
         
-        return "\n".join(unique_headers).strip()
+        return "\n".join(filtered_headers).strip()
 
       
         
