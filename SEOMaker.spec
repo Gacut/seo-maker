@@ -13,7 +13,13 @@ a = Analysis(
         ('resources/text_gen_prompt.txt', 'resources'),  # Include the text generation prompt file
         ('utils', 'utils')  # Include the utils folder in the output
     ],
-    hiddenimports=[],  # Specify any hidden imports
+    hiddenimports=[
+    'selenium',
+    'selenium.webdriver',
+    'selenium.webdriver.common.by',
+    'selenium.webdriver.common.keys',
+    'selenium.webdriver.support.ui',
+    'selenium.webdriver.support.expected_conditions'],  # Specify any hidden imports
     hookspath=[],  # Custom PyInstaller hooks (if any)
     runtime_hooks=[],  # Runtime hooks to execute
     excludes=[],  # Exclude specific modules from the build
