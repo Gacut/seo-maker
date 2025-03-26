@@ -10,7 +10,7 @@ a = Analysis(
         ('resources/icon.ico', 'resources'),  # Include the application icon
         ('resources/example_input.txt', 'resources'),  # Include the example input prompt file
         ('resources/paraphraser_prompt.txt', 'resources'),  # Include the paraphraser prompt file
-        ('resources/text_gen.txt', 'resources'),  # Include the text generation prompt file
+        ('resources/text_gen_prompt.txt', 'resources'),  # Include the text generation prompt file
         ('utils', 'utils')  # Include the utils folder in the output
     ],
     hiddenimports=[],  # Specify any hidden imports
