@@ -15,7 +15,7 @@ jobs:
     steps:
       # Step 1: Checkout the repository
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       # Step 2: Set up Python environment
       - name: Setup Python
@@ -48,14 +48,14 @@ jobs:
 
       # Step 7: Upload the main executable as an artifact
       - name: Upload Release Artifact (EXE)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: SEOMaker-EXE
           path: dist/SEOMaker/SEOMaker.exe
 
       # Step 8: Upload the complete build (zip file) as an artifact
       - name: Upload Release Artifact (ZIP)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: SEOMaker-Complete
           path: SEOMaker.zip
