@@ -8,7 +8,9 @@ a = Analysis(
     binaries=[],  # Include any additional binaries if necessary
     datas=[
         ('resources/icon.ico', 'resources'),  # Include the application icon
-        ('resources/prompt.txt', 'resources'),  # Include the default prompt file
+        ('resources/example_input.txt', 'resources'),  # Include the example input prompt file
+        ('resources/paraphraser_prompt.txt', 'resources'),  # Include the paraphraser prompt file
+        ('resources/text_gen.txt', 'resources'),  # Include the text generation prompt file
         ('utils', 'utils')  # Include the utils folder in the output
     ],
     hiddenimports=[],  # Specify any hidden imports
