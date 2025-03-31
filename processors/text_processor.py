@@ -11,7 +11,9 @@ class TextProcessor:
         self.imageFileName = ""
         self.templateLength = 4
         self.selectedType = 1
-    
+        self.filename_source = 'name'
+        
+        
     def getData(self):
         self.productDescription = self.gui.textWindowTab1.get("1.0", "end-1c")
         self.paragraphs = self.productDescription.split('\n')
@@ -20,15 +22,27 @@ class TextProcessor:
         self.templateLength = len(self.paragraphs) // 2 
 
 
-    def generateImageFileName(self, productName):
-        imageFileNameBase = productName
+    def generateImageFileName(self):
+        if self.filename_source == 'code' and hasattr(self, 'product_code'):
+            base = self.product_code
+        else:
+            base = self.productName
+        
+        imageFileNameBase = base
+        print(base)
+        print(base)
+        print(base)
+        print(base)
+        print(base)
+        print(base)
+        print(base)
         polishLetters = {'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z'}
         for letter in polishLetters:
           imageFileNameBase = imageFileNameBase.replace(letter, polishLetters[letter])
 
         imageFileNameBase = imageFileNameBase.lower()
 
-        symbolsToChange = [".", ",", "`", ":", ";", "/", "'"," ", "]", "[", "~", "<", ">","+", "=", "|", "(", ")"]
+        symbolsToChange = [".", ",", "`", ":", ";", "/", "'"," ", "]", "[", "~", "<", ">","+", "=", "|", "(", ")", "-"]
         for symbol in symbolsToChange:
             if symbol in imageFileNameBase:
                 imageFileNameBase = imageFileNameBase.replace(symbol, "-")
@@ -209,7 +223,7 @@ class TextProcessor:
     def generateSEO(self):
         self.getData()
         self.fillTemplate(self.productName, self.paragraphs)
-        self.generateImageFileName(self.productName)
+        self.generateImageFileName()
         
         self.gui.HTMLWindowTab1.delete("1.0", tk.END)  
         self.gui.HTMLWindowTab1.insert("1.0", self.readyToUse)

@@ -70,10 +70,14 @@ class ClaudeClient:
                         }
                     ]
                 )
-                
                 message = response.content[0].text
-                config["output_window"].delete("1.0", tk.END)
-                config["output_window"].insert("end", message)
+                self.gui.insert_claude_response(
+                    text = message,
+                    output_widget = config["output_window"]
+                )
+                # message = response.content[0].text
+                # config["output_window"].delete("1.0", tk.END)
+                # config["output_window"].insert("end", message)
                 return
             except Exception as e:
                 if attempt < self.MAX_RETRIES -1:

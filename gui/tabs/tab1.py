@@ -15,6 +15,8 @@ def create_tab1(parent, self):
     self.htmlLabelTab1 = tk.Label(self.tab1, text="HTML")
 
     self.textWindowTab1 = tk.Text(self.tab1, height=20, width=30)
+    self.textWindowTab1.bind("<<Modified>>", self.on_text_modified) 
+    
     self.HTMLWindowTab1 = tk.Text(self.tab1, height=20, width=30)
 
     self.transferToHTMLButtonTab1 = tk.Button(

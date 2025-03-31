@@ -6,6 +6,8 @@ Utwórz unikalny opis produktu na podstawie <specyfikacja techniczna> wyróżnia
  
  Pierwszy akapit to wstęp do opisu produktu, ma zawierać nagłówek
  
+ Nie może być dwóch nagłówków pod rząd.
+
  Pozostałe akapity zawierają nagłówki, a ich tematyka ma dotyczyć <cechy kluczowe>
  
  Opis ma być rzeczowy, zwracać uwagę na funkcjonalność opisywanego przedmiotu. 
@@ -15,6 +17,9 @@ Utwórz unikalny opis produktu na podstawie <specyfikacja techniczna> wyróżnia
  Każdy akapit ma zwierać 3-5 zdań
  
  Zwracaj szczególną uwagę na przeznaczenie <nazwa produktu>
+
+ Nie dodawaj znaków hashtag do treści tekstu, który generujesz
+
  
  
 ##Stylistyka tekstu:
