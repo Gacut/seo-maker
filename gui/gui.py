@@ -12,7 +12,7 @@ from .tabs import create_tab1, create_tab2, create_tab3
 class GUI:
     def __init__(self, text_processor, paraphraser, claude_client):
         self.window = tk.Tk()
-        self.window.title("SEOMaker v2.2.1")
+        self.window.title("SEOMaker v2.2.2")
                           
         # set the icon by dynamically constructing the path to the file                          
         base_path = get_base_path()
@@ -29,10 +29,28 @@ class GUI:
         self.ClaudeClient = claude_client
         self.defaultPrompt = load_prompt()
         self.last_product_spec = None
-
+        self.programmatic_edit = False
+        
         self.createWidgets()
         self.setupLayout()
 
+    def on_text_modified(self, event):
+        if self.programmatic_edit: 
+            return
+        if self.textWindowTab1.edit_modified():
+            self.textProcessor.filename_source = 'name'
+            self.textWindowTab1.edit_modified(False)
+            
+    def insert_claude_response(self, text, output_widget):
+        self.programmatic_edit = True
+        try:
+            output_widget.delete("1.0", tk.END)
+            output_widget.insert(tk.END, text)
+        finally:
+            self.programmatic_edit = False
+            output_widget.edit_modified(False)  # reset of the modification flag
+    
+    
     def createWidgets(self):
         self.notebook = ttk.Notebook(self.window)
         self.tab1 = create_tab1(self.notebook, self)

@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from processors.selenium import SeleniumDriver
 from utils.insert_text import insert_text
-from processors.text_processor import TextProcessor
+
 
 
 class Scraper:
@@ -22,8 +22,8 @@ class Scraper:
     def generate_input(self):
         try:
             scraped_data = self._scrape_product(self.product_url)
-            self.text_processor.generateImageFileName(scraped_data["name"])
-        
+            self.text_processor.product_code = scraped_data["product_code"]
+            self.text_processor.filename_source = 'code'
             return f"""
             <nazwa produktu>
             {scraped_data["name"]}
@@ -47,6 +47,8 @@ class Scraper:
             self._load_product_page(product_url)
             product_data["name"] = self._extract_product_name()
             
+            product_data["product_code"] = self._extract_product_code()
+            print(product_data["product_code"])
             raw_specs = self._extract_specifications()
             product_data["specifications"] = self._clean_specifications(raw_specs)
 
@@ -64,6 +66,22 @@ class Scraper:
             EC.presence_of_element_located((By.CSS_SELECTOR, "[data-name='productPage']"))
         )
         
+    def _extract_product_code(self):
+        gallery = self.selenium.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[data-name='productGallery']"))
+        )
+        images = gallery.find_elements(By.TAG_NAME, "img")
+        valid_images = [img for img in images if 'product-picture' in img.get_attribute("src")]
+        
+        if not valid_images:
+            raise ValueError("Nie znaleziono obrazków produktu w galerii.")
+        
+        image_url = valid_images[0].get_attribute("src")
+        filename = image_url.split('/')[-1]
+        product_code = filename.split('-')[0]
+        
+        return product_code
+   
     def _extract_specifications(self):
         specs_groups = self.selenium.wait.until(
             EC.visibility_of_all_elements_located((By.CSS_SELECTOR, "[data-name='specsGroup']"))
