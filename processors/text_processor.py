@@ -1,5 +1,6 @@
 import re
 import tkinter as tk
+import unicodedata
 
 class TextProcessor:
     def __init__(self, gui):
@@ -23,38 +24,34 @@ class TextProcessor:
 
 
     def generateImageFileName(self):
-        if self.filename_source == 'code' and hasattr(self, 'product_code'):
-            base = self.product_code
-        else:
-            base = self.productName
+        if self.filename_source == 'code' and hasattr(self, 'image_urls'):
+            for url in self.image_urls:
+                self.readyToUse = self.readyToUse.replace(
+                    "https://media.komputronik.pl/pl-komputronik/img/opisy_produktow/content/SEO/IMAGENAME.jpg",
+                    url,
+                    1
+                )
+            self.readyToUse = re.sub(
+            r'<div class="col-2-5[^>]*>.*?IMAGENAME\.jpg"[^>]*>.*?</div>',
+            '',
+            self.readyToUse,
+            flags=re.DOTALL
+            )    
+                
+            self.gui.imageNameEntryTab1.delete(0, tk.END)
+            self.gui.imageNameEntryTab1.insert(0, "<grafiki: galeria karty produktu>")
+            return
         
-        imageFileNameBase = base
-        print(base)
-        print(base)
-        print(base)
-        print(base)
-        print(base)
-        print(base)
-        print(base)
-        polishLetters = {'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z'}
-        for letter in polishLetters:
-          imageFileNameBase = imageFileNameBase.replace(letter, polishLetters[letter])
+        base = unicodedata.normalize('NFKD', self.productName).encode('ascii', 'ignore').decode()                                          
+        base = re.sub(r'[^A-Za-z0-9]+', '-', base)                     
+        base = base.strip('-').lower()                                 
 
-        imageFileNameBase = imageFileNameBase.lower()
+        for i in range(1, self.templateLength + 1):
+            img_name = f"{base}-{i}"
+            self.readyToUse = self.readyToUse.replace("IMAGENAME", img_name, 1)
 
-        symbolsToChange = [".", ",", "`", ":", ";", "/", "'"," ", "]", "[", "~", "<", ">","+", "=", "|", "(", ")", "-"]
-        for symbol in symbolsToChange:
-            if symbol in imageFileNameBase:
-                imageFileNameBase = imageFileNameBase.replace(symbol, "-")
-
-        for i in range(1, self.templateLength+1):
-            self.imageFileName = f"{imageFileNameBase}-{i}"
-            self.imageFileName = re.sub(r'-{2,}', '-', self.imageFileName)
-            self.readyToUse = self.readyToUse.replace(f"IMAGENAME", self.imageFileName, 1)
-
-        imageFileNameBase = re.sub(r'-{2,}', '-', imageFileNameBase)
         self.gui.imageNameEntryTab1.delete(0, tk.END)
-        self.gui.imageNameEntryTab1.insert(0, imageFileNameBase+"-") 
+        self.gui.imageNameEntryTab1.insert(0, base + "-")
 
 
     def fillTemplate(self, productName, paragraphs):
