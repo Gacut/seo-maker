@@ -74,7 +74,7 @@ class TextProcessor:
 
                                         <div class="col-3-3 center">
 
-                                        <img src="https://media.komputronik.pl/pl-komputronik/img/opisy_produktow/content/SEO/IMAGENAME.jpg" style="max-width:80%; padding:10%!important; background:#fff" alt=""/> alt=""/>
+                                        <img src="https://media.komputronik.pl/pl-komputronik/img/opisy_produktow/content/SEO/IMAGENAME.jpg" style="max-width:80%; padding:10%!important; background:#fff" alt=""/>
 
 
                                         </div>
